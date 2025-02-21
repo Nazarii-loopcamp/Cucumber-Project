@@ -1,31 +1,84 @@
 package io.loop.step_definitions;
 
 import io.cucumber.java.en.*;
+import io.loop.pages.LoginPage;
+import io.loop.utilities.BrowserUtils;
+import io.loop.utilities.ConfigurationReader;
+import io.loop.utilities.DocuportConstants;
+import io.loop.utilities.Driver;
+
+import static org.junit.Assert.assertTrue;
 
 public class LoginStepDefs {
+
+    LoginPage loginPage = new LoginPage();
+
     @Given("user is on Docuport login page")
     public void user_is_on_docuport_login_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Driver.getDriver().get(ConfigurationReader.getProperties("docuportBETA"));
     }
     @When("user enters username for client")
     public void user_enters_username_for_client() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        BrowserUtils.waitForClickable(loginPage.loginButton, DocuportConstants.LARGE);
+        assertTrue("Login button is not displayed", loginPage.loginButton.isDisplayed());
+        loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_CLIENT);
     }
     @When("user enters password for client")
     public void user_enters_password_for_client() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        loginPage.passwordInput.sendKeys(DocuportConstants.PASSWORD);
     }
     @When("user click login button")
     public void user_click_login_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        loginPage.loginButton.click();
     }
     @Then("user should be able to see the home page for client")
     public void user_should_be_able_to_see_the_home_page_for_client() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        // assertTrue("intentionally failing", false);
     }
+
+
+    @When("user enters username for employee")
+    public void user_enters_username_for_employee() {
+        BrowserUtils.waitForClickable(loginPage.loginButton, DocuportConstants.LARGE);
+        assertTrue("Login button is not displayed", loginPage.loginButton.isDisplayed());
+        loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_EMPLOYEE);
+    }
+    @When("user enters password for employee")
+    public void user_enters_password_for_employee() {
+        loginPage.passwordInput.sendKeys(DocuportConstants.PASSWORD);
+    }
+    @Then("user should be able to see the home page for emloyee")
+    public void user_should_be_able_to_see_the_home_page_for_emloyee() {
+    }
+
+
+    @When("user enters username for advisor")
+    public void user_enters_username_for_advisor() {
+        BrowserUtils.waitForClickable(loginPage.loginButton, DocuportConstants.LARGE);
+        assertTrue("Login button is not displayed", loginPage.loginButton.isDisplayed());
+        loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_ADVISOR);
+    }
+    @When("user enters password for advisor")
+    public void user_enters_password_for_advisor() {
+        loginPage.passwordInput.sendKeys(DocuportConstants.PASSWORD);
+    }
+    @Then("user should be able to see the home page for advisor")
+    public void user_should_be_able_to_see_the_home_page_for_advisor() {
+    }
+
+
+    @When("user enters username for supervisor")
+    public void user_enters_username_for_supervisor() {
+        BrowserUtils.waitForClickable(loginPage.loginButton, DocuportConstants.LARGE);
+        assertTrue("Login button is not displayed", loginPage.loginButton.isDisplayed());
+        loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_SUPERVISOR);
+    }
+    @When("user enters password for supervisor")
+    public void user_enters_password_for_supervisor() {
+        loginPage.passwordInput.sendKeys(DocuportConstants.PASSWORD);
+    }
+    @Then("user should be able to see the home page for supervisor")
+    public void user_should_be_able_to_see_the_home_page_for_supervisor() {
+    }
+
 }
